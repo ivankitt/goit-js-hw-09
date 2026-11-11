@@ -1,18 +1,27 @@
+const STORAGE_KEY = "feedback-form-state";
+
 const formState = {
-    email: "",
-    message: "",
-}
-const savedForm = localStorage.getItem('feedback-form-state')
-const form = document.querySelector('.feedback-form');
-const emailInput = document.querySelector('.emailInput');
-const messageInput = document.querySelector('.messageInput');
+  email: "",
+  message: "",
+};
 
+const form = document.querySelector(".feedback-form");
 
-if (savedForm) {
-    const state = JSON.parse(savedForm)
-    emailInput.value = state.email;
-    messageInput.value = state.message;
+const savedData = localStorage.getItem(STORAGE_KEY);
+
+if (savedData) {
+  try {
+    const parsed = JSON.parse(savedData);
+    formState.email = parsed.email ?? "";
+    formState.message = parsed.message ?? "";
+  } catch (error) {
+    console.error("Invalid data in localStorage:", error);
+  }
 }
+
+form.elements.email.value = formState.email;
+form.elements.message.value = formState.message;
+
 
 form.addEventListener("input", (event) => {
   const { name, value } = event.target;
@@ -20,7 +29,7 @@ form.addEventListener("input", (event) => {
   if (name !== "email" && name !== "message") return;
 
   formState[name] = value.trim();
-  localStorage.setItem('feedback-form-state', JSON.stringify(formState));
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(formState));
 });
 
 
