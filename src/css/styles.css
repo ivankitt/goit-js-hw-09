@@ -7,4 +7,61 @@
 body {
   margin: 0;
   font-family: system-ui, sans-serif;
+  margin: 16px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: #fafafa;
+  color: #212121;
+  line-height: 1.5;
+}
+
+
+h1,
+h2,
+h3,
+h4,
+p,
+ul {
+  margin: 0;
+  padding: 0;
+}
+
+ul {
+  list-style: none;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+  border: none;
+}
+
+address {
+  font-style: normal;
+}
+
+svg {
+  fill: currentColor;
+}
+
+.gallery {
+  width: 1128px;
+  display: flex;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+
+.gallery-item {
+  width: calc((100% / 3) - 48px);
 }
